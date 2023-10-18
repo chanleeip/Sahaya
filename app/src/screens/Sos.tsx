@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,Dimensions,Animated, Easing } from 'react-native';
 const {width,height}=Dimensions.get('window');
+import { Button } from 'react-native-paper';
 interface SosButtonState {
     isPressed: boolean;
     rippleAnimation: Animated.Value;
@@ -17,6 +18,7 @@ class Sos extends Component <{},SosButtonState >{
 
   handlePressIn = () => {
     this.setState({ isPressed: true });
+    // console.log('Pressed')
     Animated.timing(this.state.rippleAnimation, {
       toValue: 1,
       duration: 1000, // Adjust the duration as needed
@@ -35,12 +37,12 @@ class Sos extends Component <{},SosButtonState >{
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
     const { isPressed, rippleAnimation } = this.state;
 
     const rippleScale = rippleAnimation.interpolate({
       inputRange: [0, 1],
-      outputRange: [0, 10], // Adjust the maximum scale as needed
+      outputRange: [0, 1], // Adjust the maximum scale as needed
     });
 
     const rippleOpacity = rippleAnimation.interpolate({
@@ -51,6 +53,8 @@ class Sos extends Component <{},SosButtonState >{
     const rippleStyle = {
       transform: [{ scale: rippleScale }],
       opacity: rippleOpacity,
+      height:height*0.45,
+      width:width*0.8,
     };
 
 
@@ -62,16 +66,24 @@ class Sos extends Component <{},SosButtonState >{
              </View>
         </View>
         <View style={{flex:0.5,backgroundColor:'#8CE8C1',alignItems:'center',justifyContent:'center'}}>
-        <TouchableOpacity
+          <TouchableOpacity>
+        <Button
           style={[
             styles.button,
             isPressed ? styles.buttonPressed : null,
           ]}
           onPressIn={this.handlePressIn}
           onPressOut={this.handlePressOut}
-        >
-          <Animated.View style={[styles.ripple, rippleStyle]} />
-          <Text style={styles.buttonText}>SOS</Text>
+          rippleColor="#8CE8C1"
+          mode="contained"
+          onPress={() => console.log(this.state)}
+          labelStyle={{width: width*0.8,height:height*0.45, textAlign: 'center',alignContent:'center',alignSelf:'center'}}
+          >
+          <View style={styles.buttonContent}>
+    <Text style={styles.buttonText}>SOS</Text>
+  </View>
+        </Button>
+        <Animated.View style={[styles.ripple, rippleStyle]} />
         </TouchableOpacity>
         </View>
         <View style={{flex:0.23,backgroundColor:'#8CE8C1',alignItems:'center',justifyContent:'center'}}>
@@ -93,18 +105,16 @@ const styles = StyleSheet.create({
   },
   ripple: {
     position: 'absolute',
-    backgroundColor: 'rgba(0, 32, 63, 0.5)', // Adjust color and opacity as needed
+    backgroundColor: '#8CE8C1', // Adjust color and opacity as needed
     borderRadius: 100, // A large value to create a circle
-    width: 100,
-    height: 100,
-    top: '50%',
-    left: '50%',
-    marginLeft: -50, // Center the ripple
-    marginTop: -50,
+    width: width*0.8,
+    height: height*0.45,
+    alignSelf:'center',
+    alignItems:'center',
   },
   button: {
-    width: 300,
-    height: 300,
+    width: width*0.8,
+    height: height*0.45,
     borderRadius: 150,
     backgroundColor: '#00203F',
     justifyContent: 'center',
@@ -116,10 +126,15 @@ const styles = StyleSheet.create({
   buttonPressed: {
     borderColor: 'orange', 
   },
+  buttonContent: {
+    width:width*0.8,   
+    height:height*0.45,  
+    borderRadius:150,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   buttonText: {
-    fontSize: 100,
-    color: 'white',
-    textAlign: 'center',
+    fontSize: height*0.16,
   },
 });
 
