@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,Dimensions,Animated, Easing } from 'react-native';
 const {width,height}=Dimensions.get('window');
 import { Button } from 'react-native-paper';
+import MyComponent from '../components/Navbar';
 interface SosButtonState {
     isPressed: boolean;
     rippleAnimation: Animated.Value;
@@ -90,7 +91,7 @@ class Sos extends Component <{},SosButtonState >{
         <Text style={{fontSize:20,textAlign:'center',fontWeight:600}}> After Contacting Sos we will contact nearby agencies</Text>
         </View>
         <View style={{flex:0.07,backgroundColor:'#8CE8C1'}}>
-            <Text>Navbar</Text>
+        {/* <MyComponent/> */}
         </View>
       </View>
     );
