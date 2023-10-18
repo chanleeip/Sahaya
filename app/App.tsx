@@ -1,12 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import OnboardingScreen from './src/screens/OnboardingScreen';
+import Sos from './src/screens/Sos';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app good !</Text>
-      <StatusBar style="auto" />
-    </View>
+      <Sos />
   );
 }
 
