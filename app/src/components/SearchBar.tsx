@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Searchbar } from 'react-native-paper';
-
-
+import { Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
 const SearchBar:React.FC = () => {
   const [searchQuery, setSearchQuery] = React.useState('');
 
@@ -13,7 +13,8 @@ const SearchBar:React.FC = () => {
       onChangeText={onChangeSearch}
       value={searchQuery}
       mode='bar'
-      rippleColor={'red'}
+      rippleColor={'green'}
+      style={{borderRadius:20,backgroundColor:'white',borderWidth:1}}
     />
   );
 };

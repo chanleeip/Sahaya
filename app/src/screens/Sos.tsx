@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,Dimensions,Animated, Easing } from 'react-native';
 const {width,height}=Dimensions.get('window');
 import { Button } from 'react-native-paper';
-import SearchBar from '../components/SearchBar';
+import { SafeAreaView,SafeAreaProvider } from 'react-native-safe-area-context';
 
 interface SosButtonState {
     isPressed: boolean;
@@ -61,8 +61,9 @@ class Sos extends Component <{},SosButtonState >{
 
 
     return (
+      <SafeAreaView style={{flex:1,backgroundColor:'#8CE8C1'}}>
+      <SafeAreaProvider>
       <>
-      <SearchBar/>
         <View style={{flex:1,backgroundColor:'#8CE8C1'}}>
         <View style={{flex:0.2,backgroundColor:'#8CE8C1',alignItems:'center',justifyContent:'center'}}>
             <View style={{ backgroundColor: '#00203F', borderRadius: 50,paddingHorizontal:width*0.2,paddingVertical:height*0.03, borderColor:'black'}}>
@@ -98,6 +99,10 @@ class Sos extends Component <{},SosButtonState >{
         </View>
       </View>
       </>
+      </SafeAreaProvider>
+      </SafeAreaView>
+
+      
     );
   }
 }
