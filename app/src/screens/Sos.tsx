@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet,Dimensions,Animated, Easing } from 'react-native';
 const {width,height}=Dimensions.get('window');
 import { Button } from 'react-native-paper';
-import MyComponent from '../components/Navbar';
+import SearchBar from '../components/SearchBar';
+
 interface SosButtonState {
     isPressed: boolean;
     rippleAnimation: Animated.Value;
@@ -60,6 +61,8 @@ class Sos extends Component <{},SosButtonState >{
 
 
     return (
+      <>
+      <SearchBar/>
         <View style={{flex:1,backgroundColor:'#8CE8C1'}}>
         <View style={{flex:0.2,backgroundColor:'#8CE8C1',alignItems:'center',justifyContent:'center'}}>
             <View style={{ backgroundColor: '#00203F', borderRadius: 50,paddingHorizontal:width*0.2,paddingVertical:height*0.03, borderColor:'black'}}>
@@ -94,6 +97,7 @@ class Sos extends Component <{},SosButtonState >{
         {/* <MyComponent/> */}
         </View>
       </View>
+      </>
     );
   }
 }

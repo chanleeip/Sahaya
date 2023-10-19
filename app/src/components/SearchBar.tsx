@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import { SearchBar } from '@rneui/themed';
-import { View, Text, StyleSheet } from 'react-native';
+import * as React from 'react';
+import { Searchbar } from 'react-native-paper';
 
-const Searchbar=()=>{
 
-return (
-  <View style={styles.view}>
-    <SearchBar
+const SearchBar:React.FC = () => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+
+  const onChangeSearch = (query:React.SetStateAction<string>) => setSearchQuery(query);
+
+  return (
+    <Searchbar
+      placeholder="Search"
+      onChangeText={onChangeSearch}
+      value={searchQuery}
+      mode='bar'
+      rippleColor={'red'}
     />
-  </View>
-);
+  );
 };
 
-const styles = StyleSheet.create({
-view: {
-  margin: 10,
-},
-});
-
-export default Searchbar;
+export default SearchBar;

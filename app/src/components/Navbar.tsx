@@ -11,7 +11,7 @@ const Chats = () => <Text>Chats</Text>;
 
 const Helpline = () => <Text>Helpline</Text>;
 
-const MyComponent = () => {
+const BottomNavBar = () => {
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     { key: 'maps', title: 'Maps', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
@@ -42,4 +42,4 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export default BottomNavBar;
