@@ -7,22 +7,13 @@ import Searchbar from './src/components/SearchBar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import BottomNavBar from './src/components/Navbar';
 import Map from './src/components/Map';
+import Login from './src/screens/Login';
 export default function App() {
   return (
-    <SafeAreaProvider>
-            <Map latitude={11.05} longitude={76.50} />
-      <View style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}>
-          <BottomNavBar />
-        </View>
+    <SafeAreaProvider style={{flex:1}}>
+           <Login/>
       </SafeAreaProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
